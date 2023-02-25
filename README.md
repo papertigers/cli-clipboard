@@ -66,6 +66,7 @@ fn clear(&mut self) -> anhow::Result<()>;
 
 ## Alternatives
 
+1. [arboard - very active rust-clipboard fork. Has at least some amount of wayland support](https://github.com/1Password/arboard)
 1. [copypasta - rust-clipboard fork adding wayland support for windowed applications](https://github.com/alacritty/copypasta)
 1. [The original rust-clipboard](https://github.com/aweinstock314/rust-clipboard)
 
