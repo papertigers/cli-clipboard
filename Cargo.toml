@@ -17,6 +17,8 @@ objc = "0.2"
 objc_id = "0.1"
 objc-foundation = "0.1"
 
-[target.'cfg(all(unix, not(any(target_os="macos", target_os="android", target_os="emscripten"))))'.dependencies]
+[target.'cfg(all(unix, not(any(target_os="macos", target_os="android", target_os="emscripten", target_os="illumos"))))'.dependencies]
 wl-clipboard-rs = "0.7"
+
+[target.'cfg(all(unix, not(any(target_os="macos", target_os="android", target_os="emscripten"))))'.dependencies]
 x11-clipboard = "0.7"

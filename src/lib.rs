@@ -78,7 +78,12 @@ pub use common::ClipboardProvider;
 
 #[cfg(all(
     unix,
-    not(any(target_os = "macos", target_os = "android", target_os = "emscripten"))
+    not(any(
+        target_os = "macos",
+        target_os = "android",
+        target_os = "emscripten",
+        target_os = "illumos"
+    ))
 ))]
 pub mod wayland_clipboard;
 
@@ -90,7 +95,12 @@ pub mod x11_clipboard;
 
 #[cfg(all(
     unix,
-    not(any(target_os = "macos", target_os = "android", target_os = "emscripten"))
+    not(any(
+        target_os = "macos",
+        target_os = "android",
+        target_os = "emscripten",
+        target_os = "illumos"
+    ))
 ))]
 pub mod linux_clipboard;
 
@@ -100,9 +110,17 @@ pub mod windows_clipboard;
 #[cfg(target_os = "macos")]
 pub mod macos_clipboard;
 
+#[cfg(target_os = "illumos")]
+pub mod illumos_clipboard;
+
 #[cfg(all(
     unix,
-    not(any(target_os = "macos", target_os = "android", target_os = "emscripten"))
+    not(any(
+        target_os = "macos",
+        target_os = "android",
+        target_os = "emscripten",
+        target_os = "illumos"
+    ))
 ))]
 pub type ClipboardContext = linux_clipboard::LinuxClipboardContext;
 
@@ -111,6 +129,9 @@ pub type ClipboardContext = windows_clipboard::WindowsClipboardContext;
 
 #[cfg(target_os = "macos")]
 pub type ClipboardContext = macos_clipboard::MacOSClipboardContext;
+
+#[cfg(target_os = "illumos")]
+pub type ClipboardContext = illumos_clipboard::IllumosClipboardContext;
 
 /// Get the current clipboard contents
 ///
